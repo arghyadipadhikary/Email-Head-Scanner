@@ -18,16 +18,12 @@
             --panel-bg: #0a0d14;
             --text-main: #a1b2c7;
             --text-bright: #e2e8f0;
-            
-            /* Risk Colors */
             --risk-high: #ff003c;
             --risk-medium: #ffaa00;
             --risk-low: #00ff66;
-            
             --easing: cubic-bezier(0.23, 1, 0.32, 1);
             --smooth: all 0.4s var(--easing);
         }
-
         body {
             font-family: 'Fira Code', monospace;
             background-color: var(--bg-base);
@@ -43,7 +39,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
         body::after {
             content: "";
             position: fixed;
@@ -53,14 +48,12 @@
             pointer-events: none;
             z-index: 1;
         }
-
         .container {
             max-width: 950px;
             margin: auto;
             position: relative;
             z-index: 10;
         }
-
         h1 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
@@ -70,7 +63,6 @@
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.6);
             letter-spacing: 3px;
         }
-        
         .subtitle {
             color: #5d708b;
             font-size: 0.95rem;
@@ -80,8 +72,6 @@
             text-transform: uppercase;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
-        /* Live Tracker Bar */
         .session-tracker-bar {
             display: flex;
             gap: 20px;
@@ -101,7 +91,6 @@
             color: #00ffd5;
             margin-top: 4px;
         }
-
         .rgb-panel {
             position: relative;
             border-radius: 12px;
@@ -123,7 +112,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         .panel-content {
             position: relative;
             z-index: 2;
@@ -131,7 +119,6 @@
             background: var(--panel-bg);
             padding: 30px;
         }
-
         textarea {
             width: 100%;
             height: 180px;
@@ -151,7 +138,6 @@
             border-color: #00ffd5;
             box-shadow: inset 0 0 15px rgba(0, 255, 213, 0.1), 0 0 15px rgba(0, 255, 213, 0.3);
         }
-
         .btn-group { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .primary-btn {
             background: linear-gradient(90deg, #ff00c8, #002bff);
@@ -161,7 +147,6 @@
             box-shadow: 0 0 20px rgba(255, 0, 200, 0.4);
         }
         .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 43, 255, 0.6); filter: brightness(1.2); }
-        
         .secondary-btn {
             background: transparent; color: #00ffd5; border: 1px solid #00ffd5;
             border-radius: 8px; padding: 16px 35px; font-family: 'Orbitron', sans-serif;
@@ -169,8 +154,6 @@
             cursor: pointer; transition: var(--smooth);
         }
         .secondary-btn:hover { background: rgba(0, 255, 213, 0.1); box-shadow: 0 0 20px rgba(0, 255, 213, 0.4); }
-
-        /* Modern Workspace Tabs */
         .workspace-tabs {
             display: flex; gap: 10px; margin-bottom: 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px;
@@ -182,23 +165,17 @@
         }
         .tab-btn:hover { color: var(--text-bright); }
         .tab-btn.active { color: #00ffd5; border-bottom: 2px solid #00ffd5; font-weight: bold; }
-        
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-
         .dashboard-flex { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
         .score-value { font-size: clamp(3rem, 8vw, 5rem); font-family: 'Orbitron', sans-serif; line-height: 1; font-weight: bold; text-shadow: 0 0 20px currentColor; }
         .risk-label { display: inline-block; padding: 8px 20px; font-family: 'Orbitron', sans-serif; font-weight: 700; color: #000; border-radius: 4px; text-transform: uppercase; margin-top: 15px; font-size: 1rem; box-shadow: 0 0 20px currentColor; }
-
         .label-High { background-color: var(--risk-high); color: white; }
         .label-Medium { background-color: var(--risk-medium); color: #000; }
         .label-Low { background-color: var(--risk-low); color: #000; }
-
         .color-High { color: var(--risk-high); }
         .color-Medium { color: var(--risk-medium); }
         .color-Low { color: var(--risk-low); }
-
-        /* Interactive Info Tooltips */
         .info-tip {
             display: inline-block; margin-left: 6px; color: #5d708b; cursor: help;
             font-size: 0.85rem; position: relative;
@@ -214,8 +191,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .info-tip:hover::before { opacity: 1; transform: translateX(-50%) translateY(-5px); }
-
-        /* Copyable Items */
         .copyable { cursor: crosshair; position: relative; }
         .copyable:hover { background: rgba(0, 255, 213, 0.08) !important; color: #fff; }
         .copyable::after {
@@ -224,29 +199,23 @@
         }
         .copyable:hover::after { opacity: 1; }
         .copied::after { content: '[COPIED!]' !important; color: #00ff66 !important; opacity: 1 !important; }
-
         ul { list-style: none; padding: 0; margin: 0; }
         ul li { background: rgba(255, 255, 255, 0.03); border-left: 3px solid #3a4b61; border-radius: 0 6px 6px 0; padding: 16px 20px; margin-bottom: 12px; font-size: 14px; color: var(--text-bright); transition: var(--smooth); }
         ul li:hover { border-left-color: #00ffd5; transform: translateX(4px); }
-
         .success-text { color: var(--risk-low); text-shadow: 0 0 15px rgba(0, 255, 102, 0.6); font-size: 1.1rem; font-weight: bold; }
-
         table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; }
         th, td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
         th { color: var(--text-bright); font-family: 'Orbitron', sans-serif; width: 25%; font-size: 14px; }
         td { color: var(--text-main); word-break: break-all; font-size: 13px; }
         tr:hover td { color: #fff; }
-
         .chart-container { width: 360px; height: 300px; position: relative; padding: 10px 20px; }
         .hide-on-print { display: block; }
     </style>
 </head>
 <body>
-
 <div class="container" id="main-app">
     <h1>Email Threat Scanner</h1>
     <div class="subtitle">Workspace::Telemetry_Dashboard</div>
-    
     <div class="session-tracker-bar hide-on-print">
         <div class="tracker-card">
             <div style="font-size: 0.75rem; color: #5d708b; letter-spacing: 1px;">TOTAL RUNS TRIAGED</div>
@@ -261,7 +230,6 @@
             <div class="tracker-val" id="stat-avg" style="color: var(--risk-medium);">0.0</div>
         </div>
     </div>
-    
     <div class="rgb-panel hide-on-print" id="input-section">
         <div class="panel-content">
             <div style="text-align: right; margin-bottom: 5px;">
@@ -278,19 +246,16 @@
             </form>
         </div>
     </div>
-
     {% if results %}
     <div id="threat-report">
         <div class="delay-1 hide-on-print" style="text-align: right; margin-bottom: 20px;">
             <button onclick="downloadReport()" class="secondary-btn" style="padding: 10px 20px; font-size: 0.9rem;">[+] Export PDF Report</button>
         </div>
-
         <div class="workspace-tabs hide-on-print">
             <button class="tab-btn active" onclick="switchTab(event, 'tab-overview')">Overview Matrix</button>
             <button class="tab-btn" onclick="switchTab(event, 'tab-forensics')">Heuristic Records</button>
             <button class="tab-btn" onclick="switchTab(event, 'tab-headers')">Decrypted Headers</button>
         </div>
-
         <div id="tab-overview" class="tab-content active">
             <div class="rgb-panel">
                 <div class="panel-content dashboard-flex">
@@ -298,8 +263,7 @@
                         <h3>Verdict Vector</h3>
                         <div class="risk-label label-{{ results.risk_level }}">
                             {{ results.risk_level }} THREAT DETECTED
-                        </div>
-                        
+                        </div>          
                         {% if results.ai_summary %}
                         <div style="margin-top: 30px;">
                             <h4 style="color: var(--risk-{{ results.risk_level | lower }}); font-family: 'Orbitron', sans-serif; text-transform: uppercase; margin-bottom: 8px; font-size: 0.95rem;">Threat Intent Summary</h4>
@@ -307,7 +271,6 @@
                         </div>
                         {% endif %}
                     </div>
-
                     <div>
                         <div class="score-box" style="text-align: center; margin-bottom: 15px;">
                             <div class="score-value color-{{ results.risk_level }}">{{ results.threat_score }}</div>
@@ -320,7 +283,6 @@
                 </div>
             </div>
         </div>
-
         <div id="tab-forensics" class="tab-content">
             <div class="rgb-panel">
                 <div class="panel-content">
@@ -337,7 +299,6 @@
                 </div>
             </div>
         </div>
-
         <div id="tab-headers" class="tab-content">
             <div class="rgb-panel">
                 <div class="panel-content">
@@ -367,7 +328,6 @@
         window.history.replaceState(null, null, window.location.href);
     }
 
-    // Session Tracker System Logic
     document.addEventListener("DOMContentLoaded", () => {
         let history = JSON.parse(localStorage.getItem("scanner_stats")) || { total: 0, critical: 0, sum_scores: 0 };
         
