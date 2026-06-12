@@ -3,14 +3,11 @@ import re
 from urllib.parse import urlparse
 
 class HeuristicNLPAnalyzer:
-
-    # Pre-compiling static regex patterns at the class level for maximum thread speed
     _LINK_PATTERN = re.compile(r'<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)</a>', re.IGNORECASE | re.DOTALL)
     _HTTP_MATCH = re.compile(r'^https?://', re.IGNORECASE)
     _HTTP_SUB = re.compile(r'(?i)http')
 
     def __init__(self):
-        # Phase 2: Lexical Threat Matrix
         self.threat_lexicon = {
             r'\b(urgent|immediate|action required|24 hours)\b': 3.0,
             r'\b(suspend|restricted|locked|terminated)\b': 3.5,
@@ -127,8 +124,7 @@ class HeuristicNLPAnalyzer:
         phase_3_score = 0.0
         phase_4_score = 0.0
         analysis_flags = []
-
-        # Phase 1: Header Anomalies
+        
         from_header = headers.get('From', 'N/A')
         reply_to = headers.get('Reply-To', 'N/A')
         auth_results = headers.get('Authentication-Results', '')
@@ -143,7 +139,6 @@ class HeuristicNLPAnalyzer:
             phase_1_score += 3.0
             analysis_flags.append("Warning Header: SPF, DKIM, or DMARC authentication failed (+3.0 pts).")
 
-        # Phase 2: Lexical Scoring
         text_lower = text_body.lower()
         for pattern, weight in self.threat_lexicon.items():
             matches = len(re.findall(pattern, text_lower))
@@ -151,19 +146,16 @@ class HeuristicNLPAnalyzer:
                 phase_2_score += (matches * weight)
                 analysis_flags.append(f"Lexical hit: Matches '{pattern}' (+{matches * weight} pts).")
                 
-        # Phase 2.5: Cryptocurrency Hunter
         for crypto_type, pattern in self.crypto_patterns.items():
             if re.search(pattern, text_body):
                 phase_2_score += 6.0
                 analysis_flags.append(f"Critical Lexical: {crypto_type} wallet address detected. Highly indicative of extortion (+6.0 pts).")
 
-        # Phase 3: Obfuscation / Entropy
         text_entropy = self._calculate_entropy(text_body)
         if text_entropy > 5.5:
             phase_3_score += 4.0
             analysis_flags.append(f"High text entropy ({text_entropy:.2f}): Likely base64 or obfuscated payload (+4.0 pts).")
 
-        # Phase 4: Structural Phishing Indicators
         if html_body:
             link_score, link_flags = self._analyze_links(html_body)
             phase_4_score += link_score
